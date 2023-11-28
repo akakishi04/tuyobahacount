@@ -1,0 +1,10 @@
+﻿<Window x:Class="tuyobahacount.ConfirmationDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="確認" Height="111" Width="173" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+    <StackPanel Margin="10">
+        <TextBlock Text="アプリケーションを終了しますか？" Margin="0,0,0,10"/>
+        <Button Content="Yes" Click="YesButton_Click"/>
+        <Button Content="No" Click="NoButton_Click" Height="28"/>
+    </StackPanel>
+</Window>

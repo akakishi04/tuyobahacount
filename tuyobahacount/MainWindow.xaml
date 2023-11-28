@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:tuyobahacount"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="tuyobahacount.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="220" Width="620" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="None">
+    <TabControl>
+        <TabItem Header="ヒヒイロカネ">
+            <Grid Background="#FFE5E5E5">
+                <TabControl TabStripPlacement="Left">
+                    <TabItem Header="つよバハ" Cursor="" BorderBrush="#FFAFA5A5">
+                        <Grid  Background="#FFE5E5E5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="無し" HorizontalAlignment="Left" Background="#FFB3CCDA" FontSize="10" Width="80" Height="32" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,70,0,70" Grid.RowSpan="2" Click="Nodrop"/>
+                            <Button Content="栄冠の指輪" HorizontalAlignment="Left" Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="116,71,0,69" Grid.RowSpan="2" />
+                            <Button Content="覇業の指輪" HorizontalAlignment="Left"  Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="219,70,0,70" Grid.RowSpan="2"/>
+                            <Button Content="至極の指輪" HorizontalAlignment="Left" Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="325,70,0,70" Grid.RowSpan="2"/>
+                            <Button Content="ヒヒイロカネ" HorizontalAlignment="Left"  Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="430,70,0,70" Grid.RowSpan="2"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="アーカーシャ">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                    <TabItem Header="グランデ">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+
+        </TabItem>
+        <TabItem Header="刻の流砂">
+            <Grid Background="#FFE5E5E5">
+                <TabControl TabStripPlacement="Left">
+                    <TabItem Header="TabItem" Cursor="" BorderBrush="#FFAFA5A5">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                    <TabItem Header="TabItem">
+                        <Grid Background="#FFE5E5E5"/>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
