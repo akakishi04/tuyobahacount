@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
+using tuyobahacount.DataModel;
 using tuyobahacount.ViewModel;
 
 namespace tuyobahacount
@@ -24,24 +27,19 @@ namespace tuyobahacount
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private ProBahaHLView ProtBaha;
         public MainWindow()
         {
             InitializeComponent();
 
-#if DEBUG
-            // このコードはデバッグビルド時のみ実行されます
-            Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            string versionString = $"Version {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
-            Debug.WriteLine(versionString);
-            // ここにデバッグ専用のコードを書く
-#endif
 
             this.MouseLeftButtonDown += new MouseButtonEventHandler(MainWindow_MouseLeftButtonDown);
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
 
             this.Topmost = Properties.Settings.Default.Top;
 
-            var ProtBaha = new ProBahaHLView();
+            ProtBaha = new ProBahaHLView();
             var ProtBahaHLC = new UserControl.ProtBahaHLC();
 
             if (this.Topmost)
@@ -49,8 +47,8 @@ namespace tuyobahacount
                 toggleButton.Background = new SolidColorBrush(Colors.Blue);
 
             }
-            else 
-            { 
+            else
+            {
 
                 toggleButton.Background = new SolidColorBrush(Colors.White);
 
@@ -60,7 +58,7 @@ namespace tuyobahacount
             {
                 // 初回起動時の処理
                 // 例: データモデルの数値を初期化
-               
+
                 ProtBaha.ProtBaha.TotalCount = 0;
                 ProtBaha.ProtBaha.None = 0;
                 ProtBaha.ProtBaha.BlueBox = 0;
@@ -96,6 +94,13 @@ namespace tuyobahacount
         {
             // 終了時の処理
             SaveSettings();
+
+            //データの保存
+            
+            var container = new DataModelContainer();
+            container.ProtBahaHL = ProtBaha.ProtBaha;
+            SaveData("CounterData.xml", container);
+
         }
 
         private void MainWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -112,21 +117,17 @@ namespace tuyobahacount
                 // 確認ダイアログを表示
                 var customDialog = new ConfirmationDialog();
                 customDialog.Owner = this; // 'this' は現在のウィンドウを指します
-                
-             
+
+
 
                 // 「はい」が選択された場合、アプリケーションを終了
-                if ( customDialog.ShowDialog()==true)
+                if (customDialog.ShowDialog() == true)
                 {
                     Application.Current.Shutdown();
                 }
             }
         }
 
-        private void Nodrop(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -151,11 +152,21 @@ namespace tuyobahacount
             Properties.Settings.Default.Top = this.Topmost;
 
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            string versionString = $"Version {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+            string versionString = $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
             Properties.Settings.Default.version = versionString;
 
             // 設定を保存
             Properties.Settings.Default.Save();
+        }
+        private void SaveData<T>(string filePath, T data)
+        {
+            
+
+            var serializer = new XmlSerializer(typeof(T));
+            using (var writer = new StreamWriter(filePath))
+            {
+                serializer.Serialize(writer, data);
+            }
         }
     }
 }
