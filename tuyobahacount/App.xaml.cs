@@ -13,5 +13,20 @@ namespace tuyobahacount
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            if (tuyobahacount.Properties.Settings.Default.UpgradeRequired)
+            {
+                tuyobahacount.Properties.Settings.Default.Upgrade();
+                tuyobahacount.Properties.Settings.Default.UpgradeRequired = false;
+                tuyobahacount.Properties.Settings.Default.Save();
+                
+            }
+
+            // その他の初期化コード...
+        }
+
     }
 }

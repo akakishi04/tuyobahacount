@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +27,15 @@ namespace tuyobahacount
         public MainWindow()
         {
             InitializeComponent();
+
+#if DEBUG
+            // このコードはデバッグビルド時のみ実行されます
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            string versionString = $"Version {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+            Debug.WriteLine(versionString);
+            // ここにデバッグ専用のコードを書く
+#endif
+
             this.MouseLeftButtonDown += new MouseButtonEventHandler(MainWindow_MouseLeftButtonDown);
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
 
@@ -138,6 +149,10 @@ namespace tuyobahacount
         {
             // 設定の変更
             Properties.Settings.Default.Top = this.Topmost;
+
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            string versionString = $"Version {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+            Properties.Settings.Default.version = versionString;
 
             // 設定を保存
             Properties.Settings.Default.Save();
