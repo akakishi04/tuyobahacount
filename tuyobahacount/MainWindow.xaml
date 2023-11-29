@@ -4,38 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tuyobahacount"
+        xmlns:locala="clr-namespace:tuyobahacount.UserControl"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="tuyobahacount.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="220" Width="620" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="None">
     <TabControl>
         <TabItem Header="ヒヒイロカネ">
             <Grid Background="#FFE5E5E5">
-                <TabControl TabStripPlacement="Left">
-                    <TabItem Header="つよバハ" Cursor="" BorderBrush="#FFAFA5A5">
-                        <Grid  Background="#FFE5E5E5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Content="無し" HorizontalAlignment="Left" Background="#FFB3CCDA" FontSize="10" Width="80" Height="32" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="18,70,0,70" Grid.RowSpan="2" Click="Nodrop"/>
-                            <Button Content="栄冠の指輪" HorizontalAlignment="Left" Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="116,71,0,69" Grid.RowSpan="2" />
-                            <Button Content="覇業の指輪" HorizontalAlignment="Left"  Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="219,70,0,70" Grid.RowSpan="2"/>
-                            <Button Content="至極の指輪" HorizontalAlignment="Left" Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="325,70,0,70" Grid.RowSpan="2"/>
-                            <Button Content="ヒヒイロカネ" HorizontalAlignment="Left"  Background="#FFB3CCDA" FontSize="10" Width="80" Height="32"  Grid.Row="1" Grid.Column="1" Margin="430,70,0,70" Grid.RowSpan="2"/>
-                        </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="81*"/>
+                    <ColumnDefinition Width="43*"/>
+                </Grid.ColumnDefinitions>
+                <TabControl TabStripPlacement="Left" Grid.ColumnSpan="2">
+                    <TabItem Header="つよバハ" >
+                        <locala:ProtBahaHLC Width="518" Height="162" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
                     </TabItem>
                     <TabItem Header="アーカーシャ">
-                        <Grid Background="#FFE5E5E5"/>
+
                     </TabItem>
                     <TabItem Header="グランデ">
-                        <Grid Background="#FFE5E5E5"/>
+
                     </TabItem>
+                    <GridSplitter Height="100" Width="5"/>
                 </TabControl>
+                <Button x:Name="toggleButton" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="14" Height="13" Click="Button_Click" Background="Blue"/>
             </Grid>
 
         </TabItem>
@@ -52,4 +44,5 @@
             </Grid>
         </TabItem>
     </TabControl>
+
 </Window>

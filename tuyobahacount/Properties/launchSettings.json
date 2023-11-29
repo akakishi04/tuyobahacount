@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "tuyobahacount": {
+      "commandName": "Project",
+      "workingDirectory": "H:\\tuyo"
+    }
+  }
+}
