@@ -12,5 +12,10 @@ namespace tuyobahacount.DataModel
     {
 
         public ProtBahaHL ProtBahaHL { get; set; }
+
+        public DataModelContainer()
+        {
+            ProtBahaHL = new ProtBahaHL();
+        }
     }
 }

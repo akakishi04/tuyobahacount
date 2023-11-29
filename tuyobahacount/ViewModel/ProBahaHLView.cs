@@ -13,18 +13,24 @@ namespace tuyobahacount.ViewModel
     {
 
         private ProtBahaHL _protBahaHL;
+        
 
         public ProtBahaHL ProtBaha
         {
             get => _protBahaHL;
             set
             {
-                _protBahaHL = value;
-                OnPropertyChanged(nameof(ProtBaha));
+                if (_protBahaHL != value)
+                {
+                    _protBahaHL = value;
+                    OnPropertyChanged(nameof(ProtBaha));
+
+                }
 
             }
 
         }
+
         public string DropRate
         {
             get
@@ -202,5 +208,7 @@ namespace tuyobahacount.ViewModel
 
 
         }
+
+       
     }
 }

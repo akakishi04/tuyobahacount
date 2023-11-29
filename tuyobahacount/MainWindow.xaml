@@ -17,7 +17,7 @@
                 </Grid.ColumnDefinitions>
                 <TabControl TabStripPlacement="Left" Grid.ColumnSpan="2">
                     <TabItem Header="つよバハ" >
-                        <locala:ProtBahaHLC Width="518" Height="162" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+                        <locala:ProtBahaHLC x:Name="myProtBahaHLC"  Width="518" Height="162" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
                     </TabItem>
                     <TabItem Header="アーカーシャ">
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace tuyobahacount.DataModel
 {
+    [Serializable]
     public class ProtBahaHL
     {
         public int TotalCount { get; set; }

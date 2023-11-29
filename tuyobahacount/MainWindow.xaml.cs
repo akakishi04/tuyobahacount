@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.PerformanceData;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -18,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
 using tuyobahacount.DataModel;
+using tuyobahacount.UserControl;
 using tuyobahacount.ViewModel;
 
 namespace tuyobahacount
@@ -29,6 +31,7 @@ namespace tuyobahacount
     {
 
         private ProBahaHLView ProtBaha;
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -40,7 +43,7 @@ namespace tuyobahacount
             this.Topmost = Properties.Settings.Default.Top;
 
             ProtBaha = new ProBahaHLView();
-            var ProtBahaHLC = new UserControl.ProtBahaHLC();
+            
 
             if (this.Topmost)
             {
@@ -74,16 +77,27 @@ namespace tuyobahacount
             }
             else
             {
-                ProtBaha.ProtBaha.TotalCount = 0;
-                ProtBaha.ProtBaha.None = 0;
-                ProtBaha.ProtBaha.BlueBox = 0;
-                ProtBaha.ProtBaha.Intricacy_Ring = 0;
-                ProtBaha.ProtBaha.Coronation_Ring = 0;
-                ProtBaha.ProtBaha.Lineage_Ring = 0;
-                ProtBaha.ProtBaha.Gold_Brick = 0;
+                DataModelContainer container;
+
+
+                if (File.Exists("CounterData.xml"))
+                {
+                    container = IO.LoadDataModelFromXml("CounterData.xml");
+                }
+                else
+                {
+
+                    container = InitializationDMC();
+                    Debug.WriteLine($"Init...");
+
+                }
+
+               
+                ProtBaha.ProtBaha = container.ProtBahaHL;
+
             }
 
-            ProtBahaHLC.DataContext = ProtBaha;
+            myProtBahaHLC.DataContext = ProtBaha;
 
             Application.Current.Exit += Current_Exit;
 
@@ -98,8 +112,10 @@ namespace tuyobahacount
             //データの保存
             
             var container = new DataModelContainer();
-            container.ProtBahaHL = ProtBaha.ProtBaha;
-            SaveData("CounterData.xml", container);
+            var pbv = myProtBahaHLC.DataContext as ProBahaHLView;
+            container.ProtBahaHL =pbv.ProtBaha;
+            Debug.WriteLine($"Saving data: {container.ProtBahaHL.TotalCount}, {container.ProtBahaHL.None}, ...");
+            IO.SaveData("CounterData.xml", container);
 
         }
 
@@ -158,15 +174,23 @@ namespace tuyobahacount
             // 設定を保存
             Properties.Settings.Default.Save();
         }
-        private void SaveData<T>(string filePath, T data)
-        {
-            
+       
 
-            var serializer = new XmlSerializer(typeof(T));
-            using (var writer = new StreamWriter(filePath))
-            {
-                serializer.Serialize(writer, data);
-            }
+        private DataModelContainer InitializationDMC()
+        {
+
+            DataModelContainer container = new DataModelContainer();
+            container.ProtBahaHL.TotalCount = 0;
+            container.ProtBahaHL.None = 0;
+            container.ProtBahaHL.BlueBox = 0;
+            container.ProtBahaHL.Intricacy_Ring = 0;
+            container.ProtBahaHL.Coronation_Ring = 0;
+            container.ProtBahaHL.Lineage_Ring = 0;
+            container.ProtBahaHL.Gold_Brick = 0;
+
+
+            return container;
+
         }
     }
 }
