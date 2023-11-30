@@ -20,7 +20,7 @@
                         <locala:ProtBahaHLC x:Name="myProtBahaHLC"  Width="518" Height="162" VerticalAlignment="Bottom" Margin="0,0,0,5"/>
                     </TabItem>
                     <TabItem Header="アーカーシャ">
-
+                        <locala:AkashaC x:Name="myAkashaC"></locala:AkashaC>
                     </TabItem>
                     <TabItem Header="グランデ">
 
@@ -28,6 +28,7 @@
                     <GridSplitter Height="100" Width="5"/>
                 </TabControl>
                 <Button x:Name="toggleButton" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="191,10,0,0" VerticalAlignment="Top" Width="14" Height="13" Click="Button_Click" Background="Blue"/>
+                <Button x:Name="screenshot" Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="167,10,0,0" VerticalAlignment="Top" Width="14" Height="13" Click="screenshot_Click" Background="#FF23233A"/>
             </Grid>
 
         </TabItem>
