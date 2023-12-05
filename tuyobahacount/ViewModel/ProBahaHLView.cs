@@ -13,7 +13,7 @@ namespace tuyobahacount.ViewModel
     {
 
         private ProtBahaHL _protBahaHL;
-        
+        private Stack<ProtBahaHL> _history = new Stack<ProtBahaHL>();
 
         public ProtBahaHL ProtBaha
         {
@@ -126,6 +126,9 @@ namespace tuyobahacount.ViewModel
             ICLRCounter = new RelayCommand(LRCounter);
             ICIRCounter = new RelayCommand(IRCounter);
             ICGBCounter = new RelayCommand(GBCounter);
+            ICResetCount = new RelayCommand(ResetCount);
+            ICReturnCount = new RelayCommand(ReturnCount);
+
         }
 
         public ICommand ICNoDrop { get; }
@@ -133,7 +136,14 @@ namespace tuyobahacount.ViewModel
         public ICommand ICLRCounter { get; }
         public ICommand ICIRCounter { get; }
         public ICommand ICGBCounter { get; }
+        public ICommand ICResetCount { get; }
+        public ICommand ICReturnCount { get; }
 
+        private void SaveCurrentState()
+        {
+            // 現在の状態をコピーしてスタックに保存
+            _history.Push(_protBahaHL.Clone());
+        }
 
         public void TotalCount()
         {
@@ -148,13 +158,16 @@ namespace tuyobahacount.ViewModel
 
         public void NoDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             ProtBaha.None++;
             OnPropertyChanged(nameof(ProtBaha));
             OnPropertyChanged(nameof(DropRate));
+           
         }
         public void CRCounter()
         {
+            SaveCurrentState();
             ProtBaha.Coronation_Ring++;
             TotalCount();
             BlueBoxCount();
@@ -164,10 +177,11 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
             OnPropertyChanged(nameof(GBDropRate));
-
+           
         }
         public void LRCounter()
         {
+            SaveCurrentState();
             ProtBaha.Lineage_Ring++;
             TotalCount();
             BlueBoxCount();
@@ -177,10 +191,13 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
             OnPropertyChanged(nameof(GBDropRate));
+            
 
         }
         public void IRCounter()
         {
+
+            SaveCurrentState();
             ProtBaha.Intricacy_Ring++;
             TotalCount();
             BlueBoxCount();
@@ -192,10 +209,10 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(GBDropRate));
 
 
-
         }
         public void GBCounter()
         {
+            SaveCurrentState();
             ProtBaha.Gold_Brick++;
             TotalCount();
             BlueBoxCount();
@@ -205,10 +222,37 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
             OnPropertyChanged(nameof(GBDropRate));
-
+           
 
         }
 
-       
+        public void ResetCount()
+        {
+            SaveCurrentState();
+            ProtBaha = DataModelInit.ProtBahainit();
+            OnPropertyChanged(nameof(ProtBaha));
+            OnPropertyChanged(nameof(DropRate));
+            OnPropertyChanged(nameof(CRDropRate));
+            OnPropertyChanged(nameof(LRDropRate));
+            OnPropertyChanged(nameof(IRDropRate));
+            OnPropertyChanged(nameof(GBDropRate));
+            
+
+        }
+        public void ReturnCount()
+        {
+            if (_history.Count > 0)
+            {
+                ProtBaha = _history.Pop(); // 最後の状態に戻す
+                OnPropertyChanged(nameof(ProtBaha));
+                OnPropertyChanged(nameof(DropRate));
+                OnPropertyChanged(nameof(CRDropRate));
+                OnPropertyChanged(nameof(LRDropRate));
+                OnPropertyChanged(nameof(IRDropRate));
+                OnPropertyChanged(nameof(GBDropRate));
+                // その他のプロパティの更新
+            }
+        }
+
     }
 }

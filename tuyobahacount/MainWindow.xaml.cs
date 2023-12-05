@@ -34,12 +34,13 @@ namespace tuyobahacount
         private ProBahaHLView ProtBaha;
         private AkashaView Akasha;
         private Timer saveTimer;
+        private Updater _updater;
 
         public MainWindow()
         {
             InitializeComponent();
 
-
+            _updater = new Updater();
             this.MouseLeftButtonDown += new MouseButtonEventHandler(MainWindow_MouseLeftButtonDown);
             this.KeyDown += new KeyEventHandler(MainWindow_KeyDown);
 
@@ -109,6 +110,17 @@ namespace tuyobahacount
             saveTimer.AutoReset = true;
             saveTimer.Enabled = true;
 
+            this.Loaded += MainWindow_Loaded;
+
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            bool updated = await _updater.CheckForUpdates();
+            if (updated)
+            {
+                // アップデートが実行された場合の処理（必要に応じて）
+            }
         }
 
         private void SaveData()
@@ -205,29 +217,9 @@ namespace tuyobahacount
         {
 
             DataModelContainer container = new DataModelContainer();
-            container.ProtBahaHL.TotalCount = 0;
-            container.ProtBahaHL.None = 0;
-            container.ProtBahaHL.BlueBox = 0;
-            container.ProtBahaHL.Intricacy_Ring = 0;
-            container.ProtBahaHL.Coronation_Ring = 0;
-            container.ProtBahaHL.Lineage_Ring = 0;
-            container.ProtBahaHL.Gold_Brick = 0;
+            container.ProtBahaHL = DataModelInit.ProtBahainit();
 
-            container.Akasha.TotalCount = 0;
-            container.Akasha.BlueBox = 0;
-            container.Akasha.None = 0;
-            container.Akasha.Hollow_Key = 0;
-            container.Akasha.Champion_Merit = 0;
-            container.Akasha.Supreme_Merit = 0;
-            container.Akasha.Legendary_Merit = 0;
-            container.Akasha.Silver_Centrum = 0;
-            container.Akasha.Weapon_Plus_Mark1 = 0;
-            container.Akasha.Weapon_Plus_Mark2 = 0;
-            container.Akasha.Weapon_Plus_Mark3 = 0;
-            container.Akasha.Coronation_Ring = 0;
-            container.Akasha.Lineage_Ring=0;
-            container.Akasha.Intricacy_Ring = 0;
-            container.Akasha.Gold_Brick= 0;
+            container.Akasha = DataModelInit.Akashainit();
 
             return container;
 

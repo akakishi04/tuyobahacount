@@ -16,5 +16,21 @@ namespace tuyobahacount.DataModel
         public int Lineage_Ring { get; set; }
         public int Intricacy_Ring { get; set; }
         public int Gold_Brick { get; set; }
+
+        public ProtBahaHL Clone()
+        {
+            return new ProtBahaHL
+            {
+                TotalCount = this.TotalCount,
+                BlueBox = this.BlueBox,
+                None=this.None,
+                Coronation_Ring = this.Coronation_Ring,
+                Lineage_Ring = this.Lineage_Ring,
+                Intricacy_Ring = this.Intricacy_Ring,
+                Gold_Brick = this.Gold_Brick
+            };
+        }
     }
+
+    
 }

@@ -12,7 +12,9 @@ namespace tuyobahacount.ViewModel
     internal class AkashaView : ViewModelBase
     {
 
+
         private Akasha _akasha;
+        private Stack<Akasha> _history = new Stack<Akasha>();
 
         public Akasha Akasha
         {
@@ -273,6 +275,8 @@ namespace tuyobahacount.ViewModel
         public ICommand ICLRDrop { get; }
         public ICommand ICIRDrop { get; }
         public ICommand ICGBDrop { get; }
+        public ICommand ICResetCount { get; }
+        public ICommand ICReturnCount { get; }
 
         public AkashaView()
         {
@@ -291,7 +295,14 @@ namespace tuyobahacount.ViewModel
             ICLRDrop = new RelayCommand(LRDropCounter);
             ICIRDrop = new RelayCommand(IRDropCounter);
             ICGBDrop = new RelayCommand(GBDropCounter);
+            ICResetCount = new RelayCommand(ResetCount);
+            ICReturnCount = new RelayCommand(ReturnCount);
 
+        }
+        private void SaveCurrentState()
+        {
+            // 現在の状態をコピーしてスタックに保存
+            _history.Push(_akasha.Clone());
         }
 
         public void TotalCount()
@@ -313,11 +324,12 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
             OnPropertyChanged(nameof(GBDropRate));
-
+            OnPropertyChanged(nameof(DropRate));
         }
 
         public void NoDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.None++;
             OnPropertyChanged(nameof(Akasha));
@@ -325,6 +337,7 @@ namespace tuyobahacount.ViewModel
         }
         public void HKDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Hollow_Key++;
             BlueBoxCount();
@@ -333,6 +346,7 @@ namespace tuyobahacount.ViewModel
         }
         public void CMDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Champion_Merit++;
             BlueBoxCount();
@@ -341,6 +355,7 @@ namespace tuyobahacount.ViewModel
         }
         public void SMDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Supreme_Merit++;
             BlueBoxCount();
@@ -349,6 +364,7 @@ namespace tuyobahacount.ViewModel
         }
         public void LMDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Legendary_Merit++;
             BlueBoxCount();
@@ -357,6 +373,7 @@ namespace tuyobahacount.ViewModel
         }
         public void SCDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Silver_Centrum++;
             BlueBoxCount();
@@ -365,6 +382,7 @@ namespace tuyobahacount.ViewModel
         }
         public void WPM1DropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Weapon_Plus_Mark1++;
             BlueBoxCount();
@@ -373,6 +391,7 @@ namespace tuyobahacount.ViewModel
         }
         public void WPM2DropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Weapon_Plus_Mark2++;
             BlueBoxCount();
@@ -381,6 +400,7 @@ namespace tuyobahacount.ViewModel
         }
         public void WPM3DropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Weapon_Plus_Mark3++;
             BlueBoxCount();
@@ -389,6 +409,7 @@ namespace tuyobahacount.ViewModel
         }
         public void CRDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Coronation_Ring++;
             BlueBoxCount();
@@ -397,6 +418,7 @@ namespace tuyobahacount.ViewModel
         }
         public void LRDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Lineage_Ring++;
             BlueBoxCount();
@@ -405,6 +427,7 @@ namespace tuyobahacount.ViewModel
         }
         public void IRDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Intricacy_Ring++;
             BlueBoxCount();
@@ -413,11 +436,47 @@ namespace tuyobahacount.ViewModel
         }
         public void GBDropCounter()
         {
+            SaveCurrentState();
             TotalCount();
             Akasha.Gold_Brick++;
             BlueBoxCount();
             OnPropertyChanged(nameof(Akasha));
 
+        }
+
+        public void ResetCount()
+        {
+            SaveCurrentState();
+            Akasha = DataModelInit.Akashainit();
+            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(DropRate));
+            OnPropertyChanged(nameof(CRDropRate));
+            OnPropertyChanged(nameof(LRDropRate));
+            OnPropertyChanged(nameof(IRDropRate));
+            OnPropertyChanged(nameof(GBDropRate));
+
+
+        }
+        public void ReturnCount()
+        {
+            if (_history.Count > 0)
+            {
+                Akasha = _history.Pop(); // 最後の状態に戻す
+                OnPropertyChanged(nameof(Akasha));
+                OnPropertyChanged(nameof(HKDropRate));
+                OnPropertyChanged(nameof(CMDropRate));
+                OnPropertyChanged(nameof(SMDropRate));
+                OnPropertyChanged(nameof(LMDropRate));
+                OnPropertyChanged(nameof(WPM1DropRate));
+                OnPropertyChanged(nameof(WPM2DropRate));
+                OnPropertyChanged(nameof(WPM3DropRate));
+                OnPropertyChanged(nameof(CRDropRate));
+                OnPropertyChanged(nameof(LRDropRate));
+                OnPropertyChanged(nameof(IRDropRate));
+                OnPropertyChanged(nameof(GBDropRate));
+                OnPropertyChanged(nameof(DropRate));
+                // その他のプロパティの更新
+            }
         }
 
     }

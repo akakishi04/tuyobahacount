@@ -25,9 +25,9 @@
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="40*"/>
-            
-          
-            
+
+
+
         </Grid.ColumnDefinitions>
         <Button  HorizontalAlignment="Center" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICNoDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="無し" FontSize="9" Height="14" Width="60" TextAlignment="Center" IsHitTestVisible="False"/>
@@ -42,7 +42,7 @@
         <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="栄光の証" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Akasha.Champion_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding CMDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
-        
+
         <Button  HorizontalAlignment="Center" Grid.Column="3" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICSMDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="覇者の証" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="{Binding Akasha.Supreme_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
@@ -102,6 +102,8 @@
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Akasha.TotalCount}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom"  />
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" TextWrapping="Wrap" Text="{Binding Akasha.BlueBox}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" Text="{Binding DropRate}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom" />
+        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="73,1,0,0" VerticalAlignment="Top" Height="11" Width="12" Background="Orange" Command="{Binding ICResetCount}" Grid.ColumnSpan="2"/>
+        <Button Content="取り消し" HorizontalAlignment="Left" Margin="43,1,0,0" VerticalAlignment="Top" Height="19" Width="59" FontSize="8" Command="{Binding ICReturnCount}" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>
 

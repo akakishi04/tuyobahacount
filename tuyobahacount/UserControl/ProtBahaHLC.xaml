@@ -8,7 +8,7 @@
              mc:Ignorable="d" Height="167" Width="516">
 
 
-    <Grid  Background="#FFE5E5E5">
+    <Grid  Background="#FFE5E5E5" Cursor="">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
@@ -32,24 +32,26 @@
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Text="{Binding ProtBaha.TotalCount}" FontSize="20" TextAlignment="Center" FontWeight="Bold" Height="25" VerticalAlignment="Bottom"  />
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ProtBaha.BlueBox}" FontSize="20" TextAlignment="Center" FontWeight="Bold" Height="25" VerticalAlignment="Bottom" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="{Binding ProtBaha.None}"  TextAlignment="Center" FontSize="16" />
-        
+
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding ProtBaha.Coronation_Ring}"  TextAlignment="Center" FontSize="16" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="{Binding CRDropRate}"  TextAlignment="Center" FontSize="16" />
 
         <TextBlock HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ProtBaha.Lineage_Ring}"  TextAlignment="Center" FontSize="16" Margin="52,0,0,0" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Text="{Binding LRDropRate}"  TextAlignment="Center" FontSize="16" />
-        
+
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="4" TextWrapping="Wrap" Text="{Binding ProtBaha.Intricacy_Ring}"  TextAlignment="Center" FontSize="16" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="4" TextWrapping="Wrap" Text="{Binding IRDropRate}"  TextAlignment="Center" FontSize="16" />
-        
+
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="5" TextWrapping="Wrap" Text="{Binding ProtBaha.Gold_Brick}"  TextAlignment="Center" FontSize="16" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="5" TextWrapping="Wrap" Text="{Binding GBDropRate}"  TextAlignment="Center" FontSize="16" />
-        
+
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" Text="{Binding DropRate}" FontSize="20" TextAlignment="Center"  Height="25" VerticalAlignment="Bottom" Cursor=""  />
 
 
         <TextBlock Grid.Column="1" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="総回数" VerticalAlignment="Top"/>
         <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="青箱" VerticalAlignment="Top" />
         <TextBlock Grid.Column="4" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="青箱比率" VerticalAlignment="Top"/>
+        <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="11,2,0,0" VerticalAlignment="Top" Height="11" Width="12" Background="Orange" Command="{Binding ICResetCount}"/>
+        <Button Content="取り消し" HorizontalAlignment="Center" Margin="0,2,0,0" VerticalAlignment="Top" Height="19" Width="59" FontSize="8" Command="{Binding ICReturnCount}"/>
     </Grid>
 </UserControl>
