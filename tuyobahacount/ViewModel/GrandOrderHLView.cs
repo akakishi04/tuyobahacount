@@ -9,50 +9,52 @@ using tuyobahacount.UserControl;
 
 namespace tuyobahacount.ViewModel
 {
-    internal class AkashaView : ViewModelBase
+    public class GrandOrderHLView : ViewModelBase
     {
+        private GrandOrderHL _grandOrderHL;
+        private Stack<GrandOrderHL> _history = new Stack<GrandOrderHL>();
 
-
-        private Akasha _akasha;
-        private Stack<Akasha> _history = new Stack<Akasha>();
-
-        public Akasha Akasha
+        public GrandOrderHL GrandOrderHL
         {
-            get => _akasha;
+
+
+            get => _grandOrderHL;
 
             set
             {
-                if (_akasha != value)
+                if (_grandOrderHL != value)
                 {
-                    _akasha = value;
+                    _grandOrderHL = value;
                     OnPropertyChanged(nameof(Akasha));
 
                 }
 
             }
-
         }
+
+
+
         public string DropRate
         {
             get
             {
-                if (Akasha.TotalCount > 0)
+                if (GrandOrderHL.TotalCount > 0)
                 {
-                    double DropRate = (double)Akasha.BlueBox / Akasha.TotalCount * 100;
+                    double DropRate = (double)GrandOrderHL.BlueBox / GrandOrderHL.TotalCount * 100;
                     return $" {DropRate:F2}%";
                 }
                 return "nodata";
             }
         }
-        public string HKDropRate
+        public string VADropRate
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Hollow_Key > 0)
+                    if (GrandOrderHL.Verdant_Azurite > 0)
                     {
-                        double DropRate = (double)Akasha.Hollow_Key / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Verdant_Azurite / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -66,11 +68,11 @@ namespace tuyobahacount.ViewModel
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Champion_Merit > 0)
+                    if (GrandOrderHL.Champion_Merit > 0)
                     {
-                        double DropRate = (double)Akasha.Champion_Merit / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Champion_Merit / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -84,11 +86,11 @@ namespace tuyobahacount.ViewModel
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Supreme_Merit > 0)
+                    if (GrandOrderHL.Supreme_Merit > 0)
                     {
-                        double DropRate = (double)Akasha.Supreme_Merit / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Supreme_Merit / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -102,11 +104,11 @@ namespace tuyobahacount.ViewModel
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Legendary_Merit > 0)
+                    if (GrandOrderHL.Legendary_Merit > 0)
                     {
-                        double DropRate = (double)Akasha.Legendary_Merit / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Legendary_Merit / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -116,16 +118,16 @@ namespace tuyobahacount.ViewModel
                 return "nodata";
             }
         }
-        public string SCDropRate 
+        public string SCDropRate
         {
-        
+
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Silver_Centrum > 0)
+                    if (GrandOrderHL.Silver_Centrum > 0)
                     {
-                        double DropRate = (double)Akasha.Silver_Centrum / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Silver_Centrum / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -135,69 +137,16 @@ namespace tuyobahacount.ViewModel
                 return "nodata";
             }
         }
-        public string WPM1DropRate
-        {
-            get
-            {
-                if (Akasha.BlueBox > 0)
-                {
-                    if (Akasha.Weapon_Plus_Mark1 > 0)
-                    {
-                        double DropRate = (double)Akasha.Weapon_Plus_Mark1 / Akasha.BlueBox * 100;
-                        return $" {DropRate:F2}%";
-                    }
-                    else
-                        return $" {0:F2}%";
-                }
-
-                return "nodata";
-            }
-        }
-        public string WPM2DropRate
-        {
-            get
-            {
-                if (Akasha.BlueBox > 0)
-                {
-                    if (Akasha.Weapon_Plus_Mark2 > 0)
-                    {
-                        double DropRate = (double)Akasha.Weapon_Plus_Mark2 / Akasha.BlueBox * 100;
-                        return $" {DropRate:F2}%";
-                    }
-                    else
-                        return $" {0:F2}%";
-                }
-
-                return "nodata";
-            }
-        }
-        public string WPM3DropRate
-        {
-            get
-            {
-                if (Akasha.BlueBox > 0)
-                {
-                    if (Akasha.Weapon_Plus_Mark3 > 0)
-                    {
-                        double DropRate = (double)Akasha.Weapon_Plus_Mark3 / Akasha.BlueBox * 100;
-                        return $" {DropRate:F2}%";
-                    }
-                    else
-                        return $" {0:F2}%";
-                }
-
-                return "nodata";
-            }
-        }
+       
         public string CRDropRate
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Coronation_Ring > 0)
+                    if (GrandOrderHL.Coronation_Ring > 0)
                     {
-                        double DropRate = (double)Akasha.Coronation_Ring / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Coronation_Ring / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -211,11 +160,11 @@ namespace tuyobahacount.ViewModel
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Lineage_Ring > 0)
+                    if (GrandOrderHL.Lineage_Ring > 0)
                     {
-                        double DropRate = (double)Akasha.Lineage_Ring / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Lineage_Ring / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -229,11 +178,11 @@ namespace tuyobahacount.ViewModel
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Intricacy_Ring > 0)
+                    if (GrandOrderHL.Intricacy_Ring > 0)
                     {
-                        double DropRate = (double)Akasha.Intricacy_Ring / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Intricacy_Ring / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -247,11 +196,11 @@ namespace tuyobahacount.ViewModel
         {
             get
             {
-                if (Akasha.BlueBox > 0)
+                if (GrandOrderHL.BlueBox > 0)
                 {
-                    if (Akasha.Gold_Brick > 0)
+                    if (GrandOrderHL.Gold_Brick > 0)
                     {
-                        double DropRate = (double)Akasha.Gold_Brick / Akasha.BlueBox * 100;
+                        double DropRate = (double)GrandOrderHL.Gold_Brick / GrandOrderHL.BlueBox * 100;
                         return $" {DropRate:F2}%";
                     }
                     else
@@ -261,16 +210,12 @@ namespace tuyobahacount.ViewModel
                 return "nodata";
             }
         }
-
         public ICommand ICNoDrop { get; }
-        public ICommand ICHKDrop { get; }
+        public ICommand ICVADrop { get; }
         public ICommand ICCMDrop { get; }
         public ICommand ICSMDrop { get; }
         public ICommand ICLMDrop { get; }
         public ICommand ICSCDrop { get; }
-        public ICommand ICWPM1Drop { get; }
-        public ICommand ICWPM2Drop { get; }
-        public ICommand ICWPM3Drop { get; }
         public ICommand ICCRDrop { get; }
         public ICommand ICLRDrop { get; }
         public ICommand ICIRDrop { get; }
@@ -278,19 +223,16 @@ namespace tuyobahacount.ViewModel
         public ICommand ICResetCount { get; }
         public ICommand ICReturnCount { get; }
 
-        public AkashaView()
+        public GrandOrderHLView()
         {
-            Akasha = new Akasha();
+            GrandOrderHL = new GrandOrderHL();
 
             ICNoDrop = new RelayCommand(NoDropCounter);
-            ICHKDrop = new RelayCommand(HKDropCounter);
+            ICVADrop = new RelayCommand(VADropCounter);
             ICCMDrop = new RelayCommand(CMDropCounter);
             ICSMDrop = new RelayCommand(SMDropCounter);
             ICLMDrop = new RelayCommand(LMDropCounter);
             ICSCDrop = new RelayCommand(SCDropCounter);
-            ICWPM1Drop = new RelayCommand(WPM1DropCounter);
-            ICWPM2Drop = new RelayCommand(WPM2DropCounter);
-            ICWPM3Drop = new RelayCommand(WPM3DropCounter);
             ICCRDrop = new RelayCommand(CRDropCounter);
             ICLRDrop = new RelayCommand(LRDropCounter);
             ICIRDrop = new RelayCommand(IRDropCounter);
@@ -299,27 +241,25 @@ namespace tuyobahacount.ViewModel
             ICReturnCount = new RelayCommand(ReturnCount);
 
         }
+
         private void SaveCurrentState()
         {
             // 現在の状態をコピーしてスタックに保存
-            _history.Push(_akasha.Clone());
+            _history.Push(_grandOrderHL.Clone());
         }
 
         public void TotalCount()
         {
-            Akasha.TotalCount++;
+            GrandOrderHL.TotalCount++;
 
         }
         public void BlueBoxCount()
         {
-            Akasha.BlueBox++;
-            OnPropertyChanged(nameof(HKDropRate));
+            GrandOrderHL.BlueBox++;
+            OnPropertyChanged(nameof(VADropRate));
             OnPropertyChanged(nameof(CMDropRate));
             OnPropertyChanged(nameof(SMDropRate));
             OnPropertyChanged(nameof(LMDropRate));
-            OnPropertyChanged(nameof(WPM1DropRate));
-            OnPropertyChanged(nameof(WPM2DropRate));
-            OnPropertyChanged(nameof(WPM3DropRate));
             OnPropertyChanged(nameof(CRDropRate));
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
@@ -331,131 +271,102 @@ namespace tuyobahacount.ViewModel
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.None++;
-            OnPropertyChanged(nameof(Akasha));
+            GrandOrderHL.None++;
+            OnPropertyChanged(nameof(GrandOrderHL));
             OnPropertyChanged(nameof(DropRate));
         }
-        public void HKDropCounter()
+        public void VADropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Hollow_Key++;
+            GrandOrderHL.Verdant_Azurite++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
-            
+            OnPropertyChanged(nameof(GrandOrderHL));
+
         }
         public void CMDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Champion_Merit++;
+            GrandOrderHL.Champion_Merit++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
         public void SMDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Supreme_Merit++;
+            GrandOrderHL.Supreme_Merit++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
         public void LMDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Legendary_Merit++;
+            GrandOrderHL.Legendary_Merit++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
         public void SCDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Silver_Centrum++;
+            GrandOrderHL.Silver_Centrum++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
-        public void WPM1DropCounter()
-        {
-            SaveCurrentState();
-            TotalCount();
-            Akasha.Weapon_Plus_Mark1++;
-            BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
-
-        }
-        public void WPM2DropCounter()
-        {
-            SaveCurrentState();
-            TotalCount();
-            Akasha.Weapon_Plus_Mark2++;
-            BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
-
-        }
-        public void WPM3DropCounter()
-        {
-            SaveCurrentState();
-            TotalCount();
-            Akasha.Weapon_Plus_Mark3++;
-            BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
-
-        }
+       
         public void CRDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Coronation_Ring++;
+            GrandOrderHL.Coronation_Ring++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
         public void LRDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Lineage_Ring++;
+            GrandOrderHL.Lineage_Ring++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
         public void IRDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Intricacy_Ring++;
+            GrandOrderHL.Intricacy_Ring++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
         public void GBDropCounter()
         {
             SaveCurrentState();
             TotalCount();
-            Akasha.Gold_Brick++;
+            GrandOrderHL.Gold_Brick++;
             BlueBoxCount();
-            OnPropertyChanged(nameof(Akasha));
+            OnPropertyChanged(nameof(GrandOrderHL));
 
         }
 
         public void ResetCount()
         {
             SaveCurrentState();
-            Akasha = DataModelInit.Akashainit();
-            OnPropertyChanged(nameof(Akasha));
-            OnPropertyChanged(nameof(HKDropRate));
+            GrandOrderHL = DataModelInit.GrandOrderinit();
+            OnPropertyChanged(nameof(GrandOrderHL));
+            OnPropertyChanged(nameof(VADropRate));
             OnPropertyChanged(nameof(CMDropRate));
             OnPropertyChanged(nameof(SMDropRate));
             OnPropertyChanged(nameof(LMDropRate));
-            OnPropertyChanged(nameof(WPM1DropRate));
-            OnPropertyChanged(nameof(WPM2DropRate));
-            OnPropertyChanged(nameof(WPM3DropRate));
             OnPropertyChanged(nameof(CRDropRate));
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
@@ -468,15 +379,12 @@ namespace tuyobahacount.ViewModel
         {
             if (_history.Count > 0)
             {
-                Akasha = _history.Pop(); // 最後の状態に戻す
-                OnPropertyChanged(nameof(Akasha));
-                OnPropertyChanged(nameof(HKDropRate));
+                GrandOrderHL = _history.Pop(); // 最後の状態に戻す
+                OnPropertyChanged(nameof(GrandOrderHL));
+                OnPropertyChanged(nameof(VADropRate));
                 OnPropertyChanged(nameof(CMDropRate));
                 OnPropertyChanged(nameof(SMDropRate));
                 OnPropertyChanged(nameof(LMDropRate));
-                OnPropertyChanged(nameof(WPM1DropRate));
-                OnPropertyChanged(nameof(WPM2DropRate));
-                OnPropertyChanged(nameof(WPM3DropRate));
                 OnPropertyChanged(nameof(CRDropRate));
                 OnPropertyChanged(nameof(LRDropRate));
                 OnPropertyChanged(nameof(IRDropRate));
@@ -487,6 +395,4 @@ namespace tuyobahacount.ViewModel
         }
 
     }
-
- }
-
+}

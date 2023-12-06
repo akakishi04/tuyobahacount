@@ -33,6 +33,7 @@ namespace tuyobahacount
 
         private ProBahaHLView ProtBaha;
         private AkashaView Akasha;
+        private GrandOrderHLView GrandOrder;
         private Timer saveTimer;
         private Updater _updater;
 
@@ -48,6 +49,7 @@ namespace tuyobahacount
 
             ProtBaha = new ProBahaHLView();
             Akasha = new AkashaView();
+            GrandOrder = new GrandOrderHLView();
 
             DataModelContainer container;
 
@@ -99,9 +101,11 @@ namespace tuyobahacount
 
             ProtBaha.ProtBaha = container.ProtBahaHL;
             Akasha.Akasha = container.Akasha;
+            GrandOrder.GrandOrderHL = container.GrandOrderHL;
 
             myProtBahaHLC.DataContext = ProtBaha;
             myAkashaC.DataContext = Akasha;
+            myGrandOrderHLC.DataContext= GrandOrder;
 
             Application.Current.Exit += Current_Exit;
 
@@ -218,8 +222,8 @@ namespace tuyobahacount
 
             DataModelContainer container = new DataModelContainer();
             container.ProtBahaHL = DataModelInit.ProtBahainit();
-
             container.Akasha = DataModelInit.Akashainit();
+            container.GrandOrderHL = DataModelInit.GrandOrderinit();
 
             return container;
 

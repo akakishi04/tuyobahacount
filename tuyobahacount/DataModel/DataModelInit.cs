@@ -48,6 +48,26 @@ namespace tuyobahacount.DataModel
             return akasha;
 
         }
+        public static GrandOrderHL GrandOrderinit()
+        {
+            GrandOrderHL grandorder = new GrandOrderHL();
+
+            grandorder.TotalCount = 0;
+            grandorder.BlueBox = 0;
+            grandorder.None = 0;
+            grandorder.Verdant_Azurite = 0;
+            grandorder.Champion_Merit = 0;
+            grandorder.Supreme_Merit = 0;
+            grandorder.Legendary_Merit = 0;
+            grandorder.Silver_Centrum = 0;
+            grandorder.Coronation_Ring = 0;
+            grandorder.Lineage_Ring = 0;
+            grandorder.Intricacy_Ring = 0;
+            grandorder.Gold_Brick = 0;
+
+            return grandorder;
+
+        }
 
     }
 }

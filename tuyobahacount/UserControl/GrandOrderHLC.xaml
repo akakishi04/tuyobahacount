@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="tuyobahacount.UserControl.AkashaC"
+﻿<UserControl x:Class="tuyobahacount.UserControl.GrandOrderHLC"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -30,67 +30,51 @@
         </Grid.ColumnDefinitions>
         <Button  HorizontalAlignment="Center" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICNoDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="無し" FontSize="9" Height="14" Width="60" TextAlignment="Center" IsHitTestVisible="False"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Akasha.None}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="{Binding GrandOrderHL.None}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
 
-        <Button  HorizontalAlignment="Center" Grid.Column="1" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICHKDrop}" Width="60" Height="18" />
-        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="虚ろなる鍵" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Akasha.Hollow_Key}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding HKDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
+        <Button  HorizontalAlignment="Center" Grid.Column="1" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICVADrop}" Width="60" Height="18" />
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="蒼翠の結晶" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Verdant_Azurite}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding VADropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
 
         <Button  HorizontalAlignment="Center" Grid.Column="2" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICCMDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="栄光の証" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Akasha.Champion_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Champion_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding CMDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
 
         <Button  HorizontalAlignment="Center" Grid.Column="3" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICSMDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="覇者の証" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="{Binding Akasha.Supreme_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Supreme_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="{Binding SMDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
 
         <Button  HorizontalAlignment="Center" Grid.Column="4" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICLMDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="究竟の証" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="4" TextWrapping="Wrap" Text="{Binding Akasha.Legendary_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="4" TextWrapping="Wrap" Text="{Binding LMDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="4" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Legendary_Merit}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
 
         <Button  HorizontalAlignment="Center" Grid.Column="5" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICSCDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="銀天の輝き" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="5" TextWrapping="Wrap" Text="{Binding Akasha.Silver_Centrum}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="5" TextWrapping="Wrap" Text="{Binding SCDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="5" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Silver_Centrum}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
 
         <Button  HorizontalAlignment="Center" Grid.Column="6" Background="#FFB3CCDA" FontSize="10" Grid.Row="1" Command="{Binding ICGBDrop}" Width="60" Height="18" />
         <TextBlock Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="ヒヒイロカネ" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="6" TextWrapping="Wrap" Text="{Binding Akasha.Gold_Brick}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="6" TextWrapping="Wrap" Text="{Binding GBDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Grid.Column="6" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Gold_Brick}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
 
         <Button  Grid.Row="3" Grid.Column="1" Background="#FFB3CCDA" FontSize="10"  Command="{Binding ICCRDrop}" Width="60" Height="18"  HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="栄冠の指輪" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Akasha.Coronation_Ring}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Coronation_Ring}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding CRDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
 
         <Button  Grid.Row="3" Grid.Column="2" Background="#FFB3CCDA" FontSize="10"  Command="{Binding ICLRDrop}" Width="60" Height="18"  HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="覇業の指輪" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Akasha.Lineage_Ring}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Lineage_Ring}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Text="{Binding LRDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
 
         <Button  Grid.Row="3" Grid.Column="3" Background="#FFB3CCDA" FontSize="10"  Command="{Binding ICIRDrop}" Width="60" Height="18"  HorizontalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="至極の指輪" FontSize="9" Height="14" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="{Binding Akasha.Intricacy_Ring}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="{Binding GrandOrderHL.Intricacy_Ring}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="{Binding IRDropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
-
-        <Button  Grid.Row="3" Grid.Column="4" Background="#FFB3CCDA" FontSize="10"  Command="{Binding ICWPM1Drop}" Width="60" Height="18"  HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="ウェポンミラージュ+1" FontSize="7" Height="10" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="4" TextWrapping="Wrap" Text="{Binding Akasha.Weapon_Plus_Mark1}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="4" TextWrapping="Wrap" Text="{Binding WPM1DropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
-
-        <Button  Grid.Row="3" Grid.Column="5" Background="#FFB3CCDA" FontSize="10"  Command="{Binding ICWPM2Drop}" Width="60" Height="18"  HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="ウェポンミラージュ+2" FontSize="7" Height="10" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="5" TextWrapping="Wrap" Text="{Binding Akasha.Weapon_Plus_Mark2}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="5" TextWrapping="Wrap" Text="{Binding WPM2DropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
-
-
-        <Button  Grid.Row="3" Grid.Column="6" Background="#FFB3CCDA" FontSize="10"  Command="{Binding ICWPM3Drop}" Width="60" Height="18"  HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="6" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="ウェポンミラージュ+3" FontSize="7" Height="10" Width="60" IsHitTestVisible="False" TextAlignment="Center"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="6" TextWrapping="Wrap" Text="{Binding Akasha.Weapon_Plus_Mark3}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="6" TextWrapping="Wrap" Text="{Binding WPM3DropRate}"  TextAlignment="Center" FontSize="10" Height="15" VerticalAlignment="Bottom" />
 
 
@@ -98,8 +82,8 @@
         <TextBlock Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="青箱" VerticalAlignment="Top" FontSize="9" />
         <TextBlock Grid.Column="4" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="青箱比率" VerticalAlignment="Top" FontSize="9"/>
 
-        <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Akasha.TotalCount}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom"  />
-        <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" TextWrapping="Wrap" Text="{Binding Akasha.BlueBox}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="{Binding GrandOrderHL.TotalCount}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom"  />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" TextWrapping="Wrap" Text="{Binding GrandOrderHL.BlueBox}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom" />
         <TextBlock HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" Text="{Binding DropRate}" FontSize="15" TextAlignment="Center" FontWeight="Bold" Height="20" VerticalAlignment="Bottom" />
         <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="73,1,0,0" VerticalAlignment="Top" Height="11" Width="12" Background="Orange" Command="{Binding ICResetCount}" Grid.ColumnSpan="2"/>
         <Button Content="取り消し" HorizontalAlignment="Left" Margin="43,1,0,0" VerticalAlignment="Top" Height="19" Width="59" FontSize="8" Command="{Binding ICReturnCount}" Grid.ColumnSpan="2"/>

@@ -14,11 +14,13 @@ namespace tuyobahacount.DataModel
 
         public ProtBahaHL ProtBahaHL { get; set; }
         public Akasha Akasha { get; set; }
+        public GrandOrderHL GrandOrderHL { get; set; }
 
         public DataModelContainer()
         {
             ProtBahaHL = new ProtBahaHL();
             Akasha = new Akasha();
+            GrandOrderHL = new GrandOrderHL();
         }
     }
 }

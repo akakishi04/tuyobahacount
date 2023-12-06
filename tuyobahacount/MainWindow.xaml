@@ -23,7 +23,7 @@
                         <locala:AkashaC x:Name="myAkashaC"></locala:AkashaC>
                     </TabItem>
                     <TabItem Header="グランデ">
-
+                        <locala:GrandOrderHLC x:Name="myGrandOrderHLC"></locala:GrandOrderHLC>
                     </TabItem>
                     <GridSplitter Height="100" Width="5"/>
                 </TabControl>
