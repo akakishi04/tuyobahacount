@@ -15,6 +15,7 @@ namespace tuyobahacount.ViewModel
 
         private Akasha _akasha;
         private Stack<Akasha> _history = new Stack<Akasha>();
+        private bool _lastActionWasGBCounter = false;
 
         public Akasha Akasha
         {
@@ -441,6 +442,10 @@ namespace tuyobahacount.ViewModel
             Akasha.Gold_Brick++;
             BlueBoxCount();
             OnPropertyChanged(nameof(Akasha));
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string csvData = $" {timestamp},アーカーシャ, {Akasha.TotalCount}, {Akasha.BlueBox}";
+            IO.WriteToCsv("HIHIIROKANE.csv", csvData);
+            _lastActionWasGBCounter = true;
 
         }
 
@@ -483,6 +488,13 @@ namespace tuyobahacount.ViewModel
                 OnPropertyChanged(nameof(GBDropRate));
                 OnPropertyChanged(nameof(DropRate));
                 // その他のプロパティの更新
+                if (_lastActionWasGBCounter)
+                {
+                    // GBCounterが最後に呼ばれていた場合、CSVの最終行を削除
+                    IO.RemoveLastLine("GBCounterLog.csv");
+                }
+
+                _lastActionWasGBCounter = false; // フラグをリセット
             }
         }
 

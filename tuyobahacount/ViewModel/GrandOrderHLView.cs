@@ -13,6 +13,7 @@ namespace tuyobahacount.ViewModel
     {
         private GrandOrderHL _grandOrderHL;
         private Stack<GrandOrderHL> _history = new Stack<GrandOrderHL>();
+        private bool _lastActionWasGBCounter = false;
 
         public GrandOrderHL GrandOrderHL
         {
@@ -373,6 +374,10 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(GBDropRate));
             OnPropertyChanged(nameof(DropRate));
 
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string csvData = $" {timestamp},グランデHL, {GrandOrderHL.TotalCount}, {GrandOrderHL.BlueBox}";
+            IO.WriteToCsv("HIHIIROKANE.csv", csvData);
+            _lastActionWasGBCounter = true;
 
         }
         public void ReturnCount()
@@ -391,7 +396,15 @@ namespace tuyobahacount.ViewModel
                 OnPropertyChanged(nameof(GBDropRate));
                 OnPropertyChanged(nameof(DropRate));
                 // その他のプロパティの更新
+                if (_lastActionWasGBCounter)
+                {
+                    // GBCounterが最後に呼ばれていた場合、CSVの最終行を削除
+                    IO.RemoveLastLine("GBCounterLog.csv");
+                }
+
+                _lastActionWasGBCounter = false; // フラグをリセット
             }
+        }
         }
 
     }
