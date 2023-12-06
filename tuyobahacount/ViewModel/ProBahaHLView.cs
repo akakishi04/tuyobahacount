@@ -14,6 +14,7 @@ namespace tuyobahacount.ViewModel
 
         private ProtBahaHL _protBahaHL;
         private Stack<ProtBahaHL> _history = new Stack<ProtBahaHL>();
+        private bool _lastActionWasGBCounter = false;
 
         public ProtBahaHL ProtBaha
         {
@@ -222,7 +223,11 @@ namespace tuyobahacount.ViewModel
             OnPropertyChanged(nameof(LRDropRate));
             OnPropertyChanged(nameof(IRDropRate));
             OnPropertyChanged(nameof(GBDropRate));
-           
+
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string csvData = $" {timestamp},つよバハ, {ProtBaha.TotalCount}, {ProtBaha.BlueBox}";
+            IO.WriteToCsv("HIHIIROKANE.csv", csvData);
+            _lastActionWasGBCounter = true;
 
         }
 
@@ -245,12 +250,20 @@ namespace tuyobahacount.ViewModel
             {
                 ProtBaha = _history.Pop(); // 最後の状態に戻す
                 OnPropertyChanged(nameof(ProtBaha));
+                OnPropertyChanged(nameof(ProtBaha));
                 OnPropertyChanged(nameof(DropRate));
                 OnPropertyChanged(nameof(CRDropRate));
                 OnPropertyChanged(nameof(LRDropRate));
                 OnPropertyChanged(nameof(IRDropRate));
                 OnPropertyChanged(nameof(GBDropRate));
-                // その他のプロパティの更新
+
+                if (_lastActionWasGBCounter)
+                {
+                    // GBCounterが最後に呼ばれていた場合、CSVの最終行を削除
+                    IO.RemoveLastLine("GBCounterLog.csv");
+                }
+
+                _lastActionWasGBCounter = false; // フラグをリセット
             }
         }
 
